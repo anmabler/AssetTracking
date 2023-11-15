@@ -6,8 +6,19 @@ List<Asset> assetList = new List<Asset> {
     new Phone("Samsung", "S20 Plus", new DateTime(2020, 09, 12), 15000),
     new Phone("Sony Xperia", "10 III", new DateTime(2020, 03, 06), 8000)
 };
+//Asset.addMultiple(assetList);
 
-foreach (var asset in assetList)
+Computer computer = new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 2438);
+displayList();
+
+
+void displayList()
 {
-    Console.WriteLine(asset.EndOfLife);
+    Console.WriteLine("Brand".PadRight(15) + "Model".PadRight(15) + "Purchase Date".PadRight(15) + "Price");
+    Console.WriteLine("----------------------------------------------------------------------------------------------------");
+
+    foreach (Asset asset in assetList)
+    {
+        Console.WriteLine(asset.Brand.PadRight(15)+ asset.Model.PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15));
+    }
 }
