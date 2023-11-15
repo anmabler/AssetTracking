@@ -18,10 +18,5 @@ namespace Week3AssetTracking
 
         }
 
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public DateTime PurchaseDate { get; set; }
-        public int Price { get; set; }
-        public DateTime EndOfLife;
     }
 }
