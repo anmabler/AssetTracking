@@ -8,10 +8,21 @@ namespace Week3AssetTracking
 {
     internal class Office
     {
-        public Office(OfficeCountry country, string currency)
+        public Office(OfficeCountry country)
         {
             Country = country;
-            Currency = currency;
+
+            if(country == OfficeCountry.Sweden) {
+                this.Currency = "SEK";
+            }
+            else if (country == OfficeCountry.Greece)
+            {
+                this.Currency = "EUR";
+            }
+            else
+            {
+            this.Currency = "USD";
+            }
         }
 
         public enum OfficeCountry
