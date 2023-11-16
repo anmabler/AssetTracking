@@ -23,6 +23,18 @@ namespace Week3AssetTracking
             {
             this.Currency = "USD";
             }
+            // set currency rate
+            if(country == OfficeCountry.Sweden) {
+                this.CurrencyRate = 10.574373f;
+            }
+            else if (country == OfficeCountry.Greece)
+            {
+                this.CurrencyRate = 0.921447f;
+            }
+            else
+            {
+                this.CurrencyRate = 1;
+            }
         }
 
         public enum OfficeCountry
