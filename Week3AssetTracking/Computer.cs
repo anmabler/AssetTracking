@@ -8,13 +8,14 @@ namespace Week3AssetTracking
 {
     internal class Computer : Asset
     {
-        public Computer(string brand, string model, DateTime purchaseDate, int price)
+        public Computer(string brand, string model, DateTime purchaseDate, int price, Office office)
         {
             Brand = brand;
             Model = model;
             PurchaseDate = purchaseDate;
             Price = price;
             EndOfLife = PurchaseDate.AddYears(3);
+            Office = office;
         }
 
     }
