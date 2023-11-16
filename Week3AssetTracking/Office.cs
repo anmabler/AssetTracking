@@ -11,7 +11,7 @@ namespace Week3AssetTracking
         public Office(OfficeCountry country)
         {
             Country = country;
-
+            // sets the currency depending on which country
             if(country == OfficeCountry.Sweden) {
                 this.Currency = "SEK";
             }
