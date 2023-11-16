@@ -14,11 +14,12 @@ displayList();
 
 void displayList()
 {
-    Console.WriteLine("Brand".PadRight(15) + "Model".PadRight(15) + "Purchase Date".PadRight(15) + "Price");
+    
+    Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Purchase Date".PadRight(15) + "Price");
     Console.WriteLine("----------------------------------------------------------------------------------------------------");
 
     foreach (Asset asset in assetList)
     {
-        Console.WriteLine(asset.Brand.PadRight(15)+ asset.Model.PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15));
+        Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15)+ asset.Model.PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15));
     }
 }
