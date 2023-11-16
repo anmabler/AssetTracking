@@ -19,7 +19,8 @@ List<Asset> assetList = new List<Asset> {
 //Asset.addMultiple(assetList);
 
 Computer computer = new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 2438, greece);
-Console.WriteLine("Currency: " + computer.Office.Currency);
+
+addProduct();
 displayList();
 
 
@@ -55,6 +56,58 @@ void displayList()
         { 
             Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15));
         }
+
+    }
+}
+
+void addProduct()
+{
+    Console.WriteLine("Add product");
+    Console.WriteLine("1 / Add computer");
+    Console.WriteLine("2 / Add Phone");
+    string assetInput = Console.ReadLine();
+
+    Console.Write("Enter brand: ");
+    string brandInput = Console.ReadLine();
+
+    Console.Write("Enter model: ");
+    string modelInput = Console.ReadLine();
+
+    Console.Write("Enter price: ");
+    string priceInput = Console.ReadLine();
+    bool isInt = int.TryParse(priceInput, out int value);
+
+    Console.WriteLine("Enter office: ");
+    Console.WriteLine("1/ Sweden");
+    Console.WriteLine("2/ Greece");
+    Console.WriteLine("3/ USA");
+    string officeInput = Console.ReadLine();
+    Office office;
+
+    if (officeInput == "1")
+    {
+        office = new Office(Office.OfficeCountry.Sweden);
+    }
+    else if (officeInput == "2")
+    {
+        office = new Office(Office.OfficeCountry.Greece);
+    }
+    else
+    {
+        office = new Office(Office.OfficeCountry.USA);
+    }
+
+    Console.WriteLine(office.Country);
+
+    if (assetInput == "1")
+    {
+        Computer computer = new Computer(brandInput, modelInput, DateTime.Now, value, office);
+        assetList.Add(computer);
+    }
+    else if (assetInput == "2")
+            {
+        Phone phone = new Phone(brandInput, modelInput, DateTime.Now, value, office);
+        assetList.Add(phone);
 
     }
 }
