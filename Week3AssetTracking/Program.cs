@@ -42,22 +42,27 @@ void displayList()
         if (timeSpan.Days >= 180)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15) + Math.Round( asset.Office.CurrencyRate * asset.Price));
+            writeProduct(asset);
             Console.ResetColor();
         }
         else if (timeSpan.Days > 0 && timeSpan.Days >= 90)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15) + Math.Round(asset.Office.CurrencyRate * asset.Price));
+            writeProduct(asset);
             Console.ResetColor();
         }
         
         else
-        { 
-            Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15) + Math.Round(asset.Office.CurrencyRate * asset.Price));
+        {
+            writeProduct(asset);
         }
 
     }
+}
+
+void writeProduct(Asset asset)
+{
+    Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15) + Math.Round(asset.Office.CurrencyRate * asset.Price));
 }
 
 void addProduct()
