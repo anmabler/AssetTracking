@@ -27,6 +27,9 @@ void displayList()
         TimeSpan timeSpan = DateTime.Now - asset.EndOfLife;
         
         Console.WriteLine(timeSpan.Days);
+
+        // IF end of life is more than 180 days - red
+        // ELSE IF end of life is between 0 - 90 days - yellow
         if (timeSpan.Days >= 180)
         {
             Console.ForegroundColor = ConsoleColor.Red;
