@@ -19,10 +19,10 @@ List<Asset> assetList = new List<Asset> {
 // show list of assets
 displayList();
 // then menu 
-menu();
+showMenu();
 
 
-void menu()
+void showMenu()
 {
     Console.WriteLine("------------------------------------");
     Console.WriteLine("Enter a number to make a selection");
@@ -37,11 +37,11 @@ void menu()
     {
         case "1":
             addProduct();
-            menu();
+            showMenu();
             break;
         case "2":
             displayList();
-            menu();
+            showMenu();
             break;
         case "3":
             break;
@@ -61,7 +61,7 @@ void displayList()
     {
         TimeSpan timeSpan = DateTime.Now - asset.EndOfLife;
         
-
+        // Instructions unclear - this output will be colorized if the date of End of life has passed 
         // IF end of life is more than 180 days - red
         // ELSE IF end of life is between 0 - 90 days - yellow
         if (timeSpan.Days >= 180)
@@ -100,6 +100,14 @@ void addProduct()
     Console.WriteLine("1 / Add computer");
     Console.WriteLine("2 / Add Phone");
     string assetInput = Console.ReadLine();
+    if (assetInput != "1" && assetInput != "2")
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Invalid input");
+        Console.ResetColor();
+        // Start over from beginning
+        addProduct();
+    }
 
     Console.Write("Enter brand: ");
     string brandInput = Console.ReadLine();
@@ -110,6 +118,13 @@ void addProduct()
     Console.Write("Enter price: ");
     string priceInput = Console.ReadLine();
     bool isInt = int.TryParse(priceInput, out int value);
+    if (!isInt)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Invalid input");
+        Console.ResetColor();
+        addProduct();
+    }
 
     Console.WriteLine("Enter office: ");
     Console.WriteLine("1/ Sweden");
@@ -117,7 +132,7 @@ void addProduct()
     Console.WriteLine("3/ USA");
     string officeInput = Console.ReadLine();
     Office office;
-
+    //!  USA will be default - even if input is incorrect, not ideal
     if (officeInput == "1")
     {
         office = swe;
@@ -137,11 +152,21 @@ void addProduct()
     {
         Computer computer = new Computer(brandInput, modelInput, DateTime.Now, value, office);
         assetList.Add(computer);
+        Console.ForegroundColor= ConsoleColor.Green;
+        Console.WriteLine("Added computer to list.");
+        Console.ResetColor();
     }
     else if (assetInput == "2")
             {
         Phone phone = new Phone(brandInput, modelInput, DateTime.Now, value, office);
         assetList.Add(phone);
-
+        Console.ForegroundColor= ConsoleColor.Green;
+        Console.WriteLine("Added phone to list.");
+        Console.ResetColor();
+    }
+    else
+    {
+        Console.WriteLine("Something went wrong. Try again.");
+        addProduct();
     }
 }
