@@ -1,11 +1,10 @@
 ﻿using Week3AssetTracking;
 
-// ! instantiating offices. Perhaps use dict instead ??
 Office swe = new(Office.OfficeCountry.Sweden);
 Office usa = new(Office.OfficeCountry.USA);
 Office greece = new(Office.OfficeCountry.Greece);
 
-
+// TODO: Make menu loop!
 
 List<Asset> assetList = new List<Asset> {
     new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 243, swe),
@@ -16,15 +15,44 @@ List<Asset> assetList = new List<Asset> {
     new Computer("HP", "Elitebook", new DateTime(2021, 08, 30), 2234, greece),
     new Computer("HP", "Elitebook", new DateTime(2020, 07, 30), 2234, swe)
 };
-//Asset.addMultiple(assetList);
 
 Computer computer = new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 2438, greece);
 
-//addProduct();
+// show list of assets
 displayList();
+menu();
+// option to add assets
 
 
 
+void menu()
+{
+    Console.WriteLine("------------------------------------");
+    Console.WriteLine("Enter a number to make a selection");
+    Console.WriteLine("1/ Add asset");
+    Console.WriteLine("2/ Display assets");
+    Console.WriteLine("3/ Quit");
+    Console.WriteLine("------------------------------------");
+
+    string menuSelection = Console.ReadLine();
+
+    switch(menuSelection)
+    {
+        case "1":
+            addProduct();
+            menu();
+            break;
+        case "2":
+            displayList();
+            menu();
+            break;
+        case "3":
+            break;
+        default:
+            Console.WriteLine("Invalid selection");
+            break;
+    }
+}
 void displayList()
 {
     
@@ -58,6 +86,8 @@ void displayList()
         }
 
     }
+    Console.WriteLine("----------------------------------------------------------------------------------------------------");
+
 }
 
 void writeProduct(Asset asset)
