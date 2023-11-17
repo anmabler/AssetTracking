@@ -2,25 +2,17 @@
 Lexicon week 3 Asset Tracking
 
 ## Description
-
+A small console app that keeps track of company assets, specifically computers and phones. The app lists these assets and the user has the option to create new ones.
 
 
 ## Installation
-clone project
+1. clone project
 ```
-
+git clone https://github.com/anmabler/AssetTracking.git
 ```
-
-Run Main class
-
-
-## Usage
-
-```
-
-```
+2. Run Main class
 
 
 ## Authors
-[Martina Blixt Eriksson](@anmabler)
+[Martina Blixt Eriksson](https://github.com/anmabler)
 
