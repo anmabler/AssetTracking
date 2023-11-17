@@ -4,7 +4,6 @@ Office swe = new(Office.OfficeCountry.Sweden);
 Office usa = new(Office.OfficeCountry.USA);
 Office greece = new(Office.OfficeCountry.Greece);
 
-// TODO: Make menu loop!
 
 List<Asset> assetList = new List<Asset> {
     new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 243, swe),
@@ -16,13 +15,11 @@ List<Asset> assetList = new List<Asset> {
     new Computer("HP", "Elitebook", new DateTime(2020, 07, 30), 2234, swe)
 };
 
-Computer computer = new Computer("ASUS ROG", "B550-F", new DateTime(2020, 11, 24), 2438, greece);
 
 // show list of assets
 displayList();
+// then menu 
 menu();
-// option to add assets
-
 
 
 void menu()
@@ -92,6 +89,8 @@ void displayList()
 
 void writeProduct(Asset asset)
 {
+    // Writes asset info to console
+    // Type - Brand - Model - Country - Purchase Date - Price(USD) - Local Price(Math.Round(Price * Local currency rate))
     Console.WriteLine(asset.GetType().Name.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.Country.ToString().PadRight(15) + asset.PurchaseDate.ToShortDateString().PadRight(15) + asset.Price.ToString().PadRight(15) + Math.Round(asset.Office.CurrencyRate * asset.Price));
 }
 
@@ -121,15 +120,15 @@ void addProduct()
 
     if (officeInput == "1")
     {
-        office = new Office(Office.OfficeCountry.Sweden);
+        office = swe;
     }
     else if (officeInput == "2")
     {
-        office = new Office(Office.OfficeCountry.Greece);
+        office = greece;
     }
     else
     {
-        office = new Office(Office.OfficeCountry.USA);
+        office = usa;
     }
 
     Console.WriteLine(office.Country);
